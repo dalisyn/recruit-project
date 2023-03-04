@@ -1,0 +1,105 @@
+﻿@model IEnumerable<DE_Recrutement.Models.Dde_ArchiveRecrutement>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Dde)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom_Emp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fonction_Emp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type_Dde)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nbre_Poste)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remplacemnt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.File_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.File_Path)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nature_Contrat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diplome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NB_année)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Affectation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remarque)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Dde)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nom_Emp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fonction_Emp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type_Dde)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nbre_Poste)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remplacemnt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.File_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.File_Path)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nature_Contrat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diplome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NB_année)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Affectation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remarque)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

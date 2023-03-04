@@ -1,0 +1,128 @@
+﻿@model DE_Recrutement.Models.Status_Dde
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Status_Dde</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Status_Dde_demandeur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status_Dde_demandeur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Crea_demandeur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Crea_demandeur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status_Dde_chef)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status_Dde_chef)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Dde_chef)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Dde_chef)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motif_Ref_chef)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motif_Ref_chef)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status_Dde_rh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status_Dde_rh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Dde_rh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Dde_rh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motif_Ref_rh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motif_Ref_rh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status_Dde_ds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status_Dde_ds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Dde_ds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Dde_ds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motif_Ref_ds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motif_Ref_ds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusDemandeFinal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusDemandeFinal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dde_Recrutement.Nom_Emp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dde_Recrutement.Nom_Emp)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

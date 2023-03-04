@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="recruitModelStoreContainer" CdmEntityContainer="recruitEntities2">
+    <EntitySetMapping Name="Dde_ArchiveRecrutement">
+      <EntityTypeMapping TypeName="recruitModel.Dde_ArchiveRecrutement">
+        <MappingFragment StoreEntitySet="Dde_ArchiveRecrutement">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date_Dde" ColumnName="Date_Dde" />
+          <ScalarProperty Name="Nom_Emp" ColumnName="Nom_Emp" />
+          <ScalarProperty Name="Fonction_Emp" ColumnName="Fonction_Emp" />
+          <ScalarProperty Name="Type_Dde" ColumnName="Type_Dde" />
+          <ScalarProperty Name="Nbre_Poste" ColumnName="Nbre_Poste" />
+          <ScalarProperty Name="Remplacemnt" ColumnName="Remplacemnt" />
+          <ScalarProperty Name="File_Name" ColumnName="File_Name" />
+          <ScalarProperty Name="File_Path" ColumnName="File_Path" />
+          <ScalarProperty Name="Nature_Contrat" ColumnName="Nature_Contrat" />
+          <ScalarProperty Name="Diplome" ColumnName="Diplome" />
+          <ScalarProperty Name="NB_année" ColumnName="NB_année" />
+          <ScalarProperty Name="Affectation" ColumnName="Affectation" />
+          <ScalarProperty Name="Remarque" ColumnName="Remarque" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dde_Recrutement">
+      <EntityTypeMapping TypeName="recruitModel.Dde_Recrutement">
+        <MappingFragment StoreEntitySet="Dde_Recrutement">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date_Dde" ColumnName="Date_Dde" />
+          <ScalarProperty Name="Nom_Emp" ColumnName="Nom_Emp" />
+          <ScalarProperty Name="Fonction_Emp" ColumnName="Fonction_Emp" />
+          <ScalarProperty Name="Type_Dde" ColumnName="Type_Dde" />
+          <ScalarProperty Name="Nbre_Poste" ColumnName="Nbre_Poste" />
+          <ScalarProperty Name="Remplacemnt" ColumnName="Remplacemnt" />
+          <ScalarProperty Name="File_Name" ColumnName="File_Name" />
+          <ScalarProperty Name="File_Path" ColumnName="File_Path" />
+          <ScalarProperty Name="Nature_Contrat" ColumnName="Nature_Contrat" />
+          <ScalarProperty Name="Diplome" ColumnName="Diplome" />
+          <ScalarProperty Name="NB_année" ColumnName="NB_année" />
+          <ScalarProperty Name="Affectation" ColumnName="Affectation" />
+          <ScalarProperty Name="Remarque" ColumnName="Remarque" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employé">
+      <EntityTypeMapping TypeName="recruitModel.Employé">
+        <MappingFragment StoreEntitySet="Employé">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Matricule" ColumnName="Matricule" />
+          <ScalarProperty Name="Nom_prenom" ColumnName="Nom_prenom" />
+          <ScalarProperty Name="E_mail" ColumnName="E_mail" />
+          <ScalarProperty Name="Fonction" ColumnName="Fonction" />
+          <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+          <ScalarProperty Name="Id_role" ColumnName="Id_role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="recruitModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom_role" ColumnName="Nom_role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status_Dde">
+      <EntityTypeMapping TypeName="recruitModel.Status_Dde">
+        <MappingFragment StoreEntitySet="Status_Dde">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Status_Dde_demandeur" ColumnName="Status_Dde_demandeur" />
+          <ScalarProperty Name="Date_Crea_demandeur" ColumnName="Date_Crea_demandeur" />
+          <ScalarProperty Name="Status_Dde_chef" ColumnName="Status_Dde_chef" />
+          <ScalarProperty Name="Date_Dde_chef" ColumnName="Date_Dde_chef" />
+          <ScalarProperty Name="Motif_Ref_chef" ColumnName="Motif_Ref_chef" />
+          <ScalarProperty Name="Status_Dde_rh" ColumnName="Status_Dde_rh" />
+          <ScalarProperty Name="Date_Dde_rh" ColumnName="Date_Dde_rh" />
+          <ScalarProperty Name="Motif_Ref_rh" ColumnName="Motif_Ref_rh" />
+          <ScalarProperty Name="Status_Dde_ds" ColumnName="Status_Dde_ds" />
+          <ScalarProperty Name="Date_Dde_ds" ColumnName="Date_Dde_ds" />
+          <ScalarProperty Name="Motif_Ref_ds" ColumnName="Motif_Ref_ds" />
+          <ScalarProperty Name="StatusDemandeFinal" ColumnName="StatusDemandeFinal" />
+          <ScalarProperty Name="IdDemande" ColumnName="IdDemande" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

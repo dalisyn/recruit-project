@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="recruitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Dde_ArchiveRecrutement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Date_Dde" Type="datetime" />
+    <Property Name="Nom_Emp" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fonction_Emp" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type_Dde" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nbre_Poste" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remplacemnt" Type="nvarchar" MaxLength="50" />
+    <Property Name="File_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="File_Path" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nature_Contrat" Type="nvarchar" MaxLength="50" />
+    <Property Name="Diplome" Type="nvarchar" MaxLength="50" />
+    <Property Name="NB_année" Type="int" />
+    <Property Name="Affectation" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remarque" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Dde_Recrutement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Date_Dde" Type="datetime" />
+    <Property Name="Nom_Emp" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fonction_Emp" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type_Dde" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nbre_Poste" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remplacemnt" Type="nvarchar" MaxLength="50" />
+    <Property Name="File_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="File_Path" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nature_Contrat" Type="nvarchar" MaxLength="50" />
+    <Property Name="Diplome" Type="nvarchar" MaxLength="50" />
+    <Property Name="NB_année" Type="int" />
+    <Property Name="Affectation" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remarque" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Employé">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Matricule" Type="nvarchar(max)" />
+    <Property Name="Nom_prenom" Type="nvarchar(max)" />
+    <Property Name="E_mail" Type="nvarchar(max)" />
+    <Property Name="Fonction" Type="nvarchar(max)" />
+    <Property Name="Responsable" Type="nvarchar(max)" />
+    <Property Name="Id_role" Type="int" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nom_role" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Status_Dde">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status_Dde_demandeur" Type="varchar" MaxLength="50" />
+    <Property Name="Date_Crea_demandeur" Type="datetime" />
+    <Property Name="Status_Dde_chef" Type="varchar" MaxLength="50" />
+    <Property Name="Date_Dde_chef" Type="datetime" />
+    <Property Name="Motif_Ref_chef" Type="varchar" MaxLength="50" />
+    <Property Name="Status_Dde_rh" Type="varchar" MaxLength="50" />
+    <Property Name="Date_Dde_rh" Type="datetime" />
+    <Property Name="Motif_Ref_rh" Type="varchar" MaxLength="50" />
+    <Property Name="Status_Dde_ds" Type="varchar" MaxLength="50" />
+    <Property Name="Date_Dde_ds" Type="datetime" />
+    <Property Name="Motif_Ref_ds" Type="varchar" MaxLength="50" />
+    <Property Name="StatusDemandeFinal" Type="varchar" MaxLength="50" />
+    <Property Name="IdDemande" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Employé_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="Employé" Type="Self.Employé" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employé">
+        <PropertyRef Name="Id_role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Status_Dde_Dde_Recrutement">
+    <End Role="Dde_Recrutement" Type="Self.Dde_Recrutement" Multiplicity="1" />
+    <End Role="Status_Dde" Type="Self.Status_Dde" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dde_Recrutement">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Status_Dde">
+        <PropertyRef Name="IdDemande" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="recruitModelStoreContainer">
+    <EntitySet Name="Dde_ArchiveRecrutement" EntityType="Self.Dde_ArchiveRecrutement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dde_Recrutement" EntityType="Self.Dde_Recrutement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employé" EntityType="Self.Employé" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Status_Dde" EntityType="Self.Status_Dde" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Employé_Role" Association="Self.FK_Employé_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Employé" EntitySet="Employé" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Status_Dde_Dde_Recrutement" Association="Self.FK_Status_Dde_Dde_Recrutement">
+      <End Role="Dde_Recrutement" EntitySet="Dde_Recrutement" />
+      <End Role="Status_Dde" EntitySet="Status_Dde" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

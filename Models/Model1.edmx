@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="recruitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dde_ArchiveRecrutement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Date_Dde" Type="datetime" />
+          <Property Name="Nom_Emp" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fonction_Emp" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type_Dde" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nbre_Poste" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remplacemnt" Type="nvarchar" MaxLength="50" />
+          <Property Name="File_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="File_Path" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nature_Contrat" Type="nvarchar" MaxLength="50" />
+          <Property Name="Diplome" Type="nvarchar" MaxLength="50" />
+          <Property Name="NB_année" Type="int" />
+          <Property Name="Affectation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarque" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Dde_Recrutement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Date_Dde" Type="datetime" />
+          <Property Name="Nom_Emp" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fonction_Emp" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type_Dde" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nbre_Poste" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remplacemnt" Type="nvarchar" MaxLength="50" />
+          <Property Name="File_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="File_Path" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nature_Contrat" Type="nvarchar" MaxLength="50" />
+          <Property Name="Diplome" Type="nvarchar" MaxLength="50" />
+          <Property Name="NB_année" Type="int" />
+          <Property Name="Affectation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarque" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employé">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Matricule" Type="nvarchar(max)" />
+          <Property Name="Nom_prenom" Type="nvarchar(max)" />
+          <Property Name="E_mail" Type="nvarchar(max)" />
+          <Property Name="Fonction" Type="nvarchar(max)" />
+          <Property Name="Responsable" Type="nvarchar(max)" />
+          <Property Name="Id_role" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_role" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Status_Dde">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status_Dde_demandeur" Type="varchar" MaxLength="50" />
+          <Property Name="Date_Crea_demandeur" Type="datetime" />
+          <Property Name="Status_Dde_chef" Type="varchar" MaxLength="50" />
+          <Property Name="Date_Dde_chef" Type="datetime" />
+          <Property Name="Motif_Ref_chef" Type="varchar" MaxLength="50" />
+          <Property Name="Status_Dde_rh" Type="varchar" MaxLength="50" />
+          <Property Name="Date_Dde_rh" Type="datetime" />
+          <Property Name="Motif_Ref_rh" Type="varchar" MaxLength="50" />
+          <Property Name="Status_Dde_ds" Type="varchar" MaxLength="50" />
+          <Property Name="Date_Dde_ds" Type="datetime" />
+          <Property Name="Motif_Ref_ds" Type="varchar" MaxLength="50" />
+          <Property Name="StatusDemandeFinal" Type="varchar" MaxLength="50" />
+          <Property Name="IdDemande" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Employé_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Employé" Type="Self.Employé" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employé">
+              <PropertyRef Name="Id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_Dde_Dde_Recrutement">
+          <End Role="Dde_Recrutement" Type="Self.Dde_Recrutement" Multiplicity="1" />
+          <End Role="Status_Dde" Type="Self.Status_Dde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dde_Recrutement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Status_Dde">
+              <PropertyRef Name="IdDemande" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="recruitModelStoreContainer">
+          <EntitySet Name="Dde_ArchiveRecrutement" EntityType="Self.Dde_ArchiveRecrutement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dde_Recrutement" EntityType="Self.Dde_Recrutement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employé" EntityType="Self.Employé" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status_Dde" EntityType="Self.Status_Dde" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Employé_Role" Association="Self.FK_Employé_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employé" EntitySet="Employé" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_Dde_Dde_Recrutement" Association="Self.FK_Status_Dde_Dde_Recrutement">
+            <End Role="Dde_Recrutement" EntitySet="Dde_Recrutement" />
+            <End Role="Status_Dde" EntitySet="Status_Dde" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="recruitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dde_ArchiveRecrutement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Date_Dde" Type="DateTime" Precision="3" />
+          <Property Name="Nom_Emp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fonction_Emp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type_Dde" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nbre_Poste" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remplacemnt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="File_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="File_Path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nature_Contrat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Diplome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NB_année" Type="Int32" />
+          <Property Name="Affectation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarque" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Dde_Recrutement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Date_Dde" Type="DateTime" Precision="3" />
+          <Property Name="Nom_Emp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fonction_Emp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type_Dde" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nbre_Poste" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remplacemnt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="File_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="File_Path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nature_Contrat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Diplome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NB_année" Type="Int32" />
+          <Property Name="Affectation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarque" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Status_Dde" Relationship="Self.FK_Status_Dde_Dde_Recrutement" FromRole="Dde_Recrutement" ToRole="Status_Dde" />
+        </EntityType>
+        <EntityType Name="Employé">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Matricule" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Nom_prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="E_mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fonction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Responsable" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_role" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Employé_Role" FromRole="Employé" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employé" Relationship="Self.FK_Employé_Role" FromRole="Role" ToRole="Employé" />
+        </EntityType>
+        <EntityType Name="Status_Dde">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status_Dde_demandeur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Crea_demandeur" Type="DateTime" Precision="3" />
+          <Property Name="Status_Dde_chef" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Dde_chef" Type="DateTime" Precision="3" />
+          <Property Name="Motif_Ref_chef" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status_Dde_rh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Dde_rh" Type="DateTime" Precision="3" />
+          <Property Name="Motif_Ref_rh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status_Dde_ds" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date_Dde_ds" Type="DateTime" Precision="3" />
+          <Property Name="Motif_Ref_ds" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusDemandeFinal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdDemande" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dde_Recrutement" Relationship="Self.FK_Status_Dde_Dde_Recrutement" FromRole="Status_Dde" ToRole="Dde_Recrutement" />
+        </EntityType>
+        <Association Name="FK_Status_Dde_Dde_Recrutement">
+          <End Role="Dde_Recrutement" Type="Self.Dde_Recrutement" Multiplicity="1" />
+          <End Role="Status_Dde" Type="Self.Status_Dde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dde_Recrutement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Status_Dde">
+              <PropertyRef Name="IdDemande" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employé_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Employé" Type="Self.Employé" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employé">
+              <PropertyRef Name="Id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="recruitEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dde_ArchiveRecrutement" EntityType="Self.Dde_ArchiveRecrutement" />
+          <EntitySet Name="Dde_Recrutement" EntityType="Self.Dde_Recrutement" />
+          <EntitySet Name="Employé" EntityType="Self.Employé" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Status_Dde" EntityType="Self.Status_Dde" />
+          <AssociationSet Name="FK_Status_Dde_Dde_Recrutement" Association="Self.FK_Status_Dde_Dde_Recrutement">
+            <End Role="Dde_Recrutement" EntitySet="Dde_Recrutement" />
+            <End Role="Status_Dde" EntitySet="Status_Dde" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employé_Role" Association="Self.FK_Employé_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Employé" EntitySet="Employé" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="recruitModelStoreContainer" CdmEntityContainer="recruitEntities2">
+          <EntitySetMapping Name="Dde_ArchiveRecrutement">
+            <EntityTypeMapping TypeName="recruitModel.Dde_ArchiveRecrutement">
+              <MappingFragment StoreEntitySet="Dde_ArchiveRecrutement">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date_Dde" ColumnName="Date_Dde" />
+                <ScalarProperty Name="Nom_Emp" ColumnName="Nom_Emp" />
+                <ScalarProperty Name="Fonction_Emp" ColumnName="Fonction_Emp" />
+                <ScalarProperty Name="Type_Dde" ColumnName="Type_Dde" />
+                <ScalarProperty Name="Nbre_Poste" ColumnName="Nbre_Poste" />
+                <ScalarProperty Name="Remplacemnt" ColumnName="Remplacemnt" />
+                <ScalarProperty Name="File_Name" ColumnName="File_Name" />
+                <ScalarProperty Name="File_Path" ColumnName="File_Path" />
+                <ScalarProperty Name="Nature_Contrat" ColumnName="Nature_Contrat" />
+                <ScalarProperty Name="Diplome" ColumnName="Diplome" />
+                <ScalarProperty Name="NB_année" ColumnName="NB_année" />
+                <ScalarProperty Name="Affectation" ColumnName="Affectation" />
+                <ScalarProperty Name="Remarque" ColumnName="Remarque" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dde_Recrutement">
+            <EntityTypeMapping TypeName="recruitModel.Dde_Recrutement">
+              <MappingFragment StoreEntitySet="Dde_Recrutement">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date_Dde" ColumnName="Date_Dde" />
+                <ScalarProperty Name="Nom_Emp" ColumnName="Nom_Emp" />
+                <ScalarProperty Name="Fonction_Emp" ColumnName="Fonction_Emp" />
+                <ScalarProperty Name="Type_Dde" ColumnName="Type_Dde" />
+                <ScalarProperty Name="Nbre_Poste" ColumnName="Nbre_Poste" />
+                <ScalarProperty Name="Remplacemnt" ColumnName="Remplacemnt" />
+                <ScalarProperty Name="File_Name" ColumnName="File_Name" />
+                <ScalarProperty Name="File_Path" ColumnName="File_Path" />
+                <ScalarProperty Name="Nature_Contrat" ColumnName="Nature_Contrat" />
+                <ScalarProperty Name="Diplome" ColumnName="Diplome" />
+                <ScalarProperty Name="NB_année" ColumnName="NB_année" />
+                <ScalarProperty Name="Affectation" ColumnName="Affectation" />
+                <ScalarProperty Name="Remarque" ColumnName="Remarque" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employé">
+            <EntityTypeMapping TypeName="recruitModel.Employé">
+              <MappingFragment StoreEntitySet="Employé">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Matricule" ColumnName="Matricule" />
+                <ScalarProperty Name="Nom_prenom" ColumnName="Nom_prenom" />
+                <ScalarProperty Name="E_mail" ColumnName="E_mail" />
+                <ScalarProperty Name="Fonction" ColumnName="Fonction" />
+                <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+                <ScalarProperty Name="Id_role" ColumnName="Id_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="recruitModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nom_role" ColumnName="Nom_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status_Dde">
+            <EntityTypeMapping TypeName="recruitModel.Status_Dde">
+              <MappingFragment StoreEntitySet="Status_Dde">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status_Dde_demandeur" ColumnName="Status_Dde_demandeur" />
+                <ScalarProperty Name="Date_Crea_demandeur" ColumnName="Date_Crea_demandeur" />
+                <ScalarProperty Name="Status_Dde_chef" ColumnName="Status_Dde_chef" />
+                <ScalarProperty Name="Date_Dde_chef" ColumnName="Date_Dde_chef" />
+                <ScalarProperty Name="Motif_Ref_chef" ColumnName="Motif_Ref_chef" />
+                <ScalarProperty Name="Status_Dde_rh" ColumnName="Status_Dde_rh" />
+                <ScalarProperty Name="Date_Dde_rh" ColumnName="Date_Dde_rh" />
+                <ScalarProperty Name="Motif_Ref_rh" ColumnName="Motif_Ref_rh" />
+                <ScalarProperty Name="Status_Dde_ds" ColumnName="Status_Dde_ds" />
+                <ScalarProperty Name="Date_Dde_ds" ColumnName="Date_Dde_ds" />
+                <ScalarProperty Name="Motif_Ref_ds" ColumnName="Motif_Ref_ds" />
+                <ScalarProperty Name="StatusDemandeFinal" ColumnName="StatusDemandeFinal" />
+                <ScalarProperty Name="IdDemande" ColumnName="IdDemande" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

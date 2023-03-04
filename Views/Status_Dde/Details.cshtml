@@ -1,0 +1,122 @@
+﻿@model DE_Recrutement.Models.Status_Dde
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Status_Dde</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Status_Dde_demandeur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status_Dde_demandeur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Crea_demandeur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Crea_demandeur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status_Dde_chef)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status_Dde_chef)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Dde_chef)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Dde_chef)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motif_Ref_chef)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motif_Ref_chef)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status_Dde_rh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status_Dde_rh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Dde_rh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Dde_rh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motif_Ref_rh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motif_Ref_rh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status_Dde_ds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status_Dde_ds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Dde_ds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Dde_ds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motif_Ref_ds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motif_Ref_ds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusDemandeFinal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusDemandeFinal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dde_Recrutement.Nom_Emp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dde_Recrutement.Nom_Emp)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

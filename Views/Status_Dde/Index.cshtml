@@ -1,0 +1,105 @@
+﻿@model IEnumerable<DE_Recrutement.Models.Status_Dde>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Status_Dde_demandeur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Crea_demandeur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status_Dde_chef)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Dde_chef)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Motif_Ref_chef)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status_Dde_rh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Dde_rh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Motif_Ref_rh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status_Dde_ds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Dde_ds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Motif_Ref_ds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusDemandeFinal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dde_Recrutement.Nom_Emp)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status_Dde_demandeur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Crea_demandeur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status_Dde_chef)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Dde_chef)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Motif_Ref_chef)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status_Dde_rh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Dde_rh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Motif_Ref_rh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status_Dde_ds)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Dde_ds)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Motif_Ref_ds)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusDemandeFinal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dde_Recrutement.Nom_Emp)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

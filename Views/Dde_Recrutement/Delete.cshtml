@@ -1,0 +1,128 @@
+﻿@model DE_Recrutement.Models.Dde_Recrutement
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Dde_Recrutement</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Dde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Dde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom_Emp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom_Emp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fonction_Emp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fonction_Emp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type_Dde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type_Dde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nbre_Poste)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nbre_Poste)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remplacemnt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remplacemnt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.File_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.File_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.File_Path)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.File_Path)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nature_Contrat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nature_Contrat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diplome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diplome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NB_année)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NB_année)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Affectation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Affectation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remarque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remarque)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
